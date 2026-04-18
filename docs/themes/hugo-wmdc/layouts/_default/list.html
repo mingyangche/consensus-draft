@@ -1,0 +1,15 @@
+{{ define "main" }}
+<div class="page-content">
+  <h1>{{ .Title }}</h1>
+  {{ .Content }}
+  <div class="posts-list">
+    {{ range .Paginator.Pages }}
+    <article class="post-item">
+      <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+      <time>{{ .Date.Format "January 2, 2006" }}</time>
+      <p>{{ .Summary }}</p>
+    </article>
+    {{ end }}
+  </div>
+</div>
+{{ end }}

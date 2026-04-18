@@ -1,0 +1,6 @@
+name = "WMDC Theme"
+license = "MIT"
+licenselink = "https://github.com/mingyangche/consensus-draft/blob/main/LICENSE"
+description = "A serene, meditation-inspired Hugo theme for WMDC Consensus"
+features = ["minimal", "meditation", "calm", "zen"]
+min_version = "0.80.0"

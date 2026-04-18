@@ -1,0 +1,39 @@
+baseURL = 'https://mingyangche.github.io/consensus-draft/'
+languageCode = 'en-us'
+title = 'WMDC Consensus'
+theme = "hugo-wmdc"
+copyright = "© 2026 WMDC Consensus. All rights reserved."
+
+enableRobotsTXT = true
+enableGitInfo = false
+enableEmoji = true
+hasCJKLanguage = true
+defaultContentLanguage = 'en'
+
+[minify]
+  disableXML = true
+  minifyOutput = true
+
+[pagination]
+  pagerSize = 10
+
+[markup]
+  [markup.highlight]
+    codeFences = true
+
+[outputs]
+  home = ["HTML", "JSON", "RSS"]
+  page = ["HTML"]
+  section = ["HTML", "JSON", "RSS"]
+
+[params]
+  description = "World Meditation Day Consensus Platform"
+  keywords = ["WMDC", "Meditation", "Consensus", "Community"]
+  author = "WMDC Team"
+  primaryColor = "#5B7B7A"
+  secondaryColor = "#8FA5A3"
+  accentColor = "#D4A574"
+  backgroundColor = "#F8F9FA"
+  github = "https://github.com/mingyangche/consensus-draft"
+  heroTitle = "WMDC Consensus"
+  heroSubtitle = "Building consensus through collective meditation and mindful dialogue"
