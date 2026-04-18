@@ -1,0 +1,64 @@
+name: Test
+
+on:
+  pull_request:
+    branches:
+      - main
+      - master
+  push:
+    branches:
+      - '**'
+
+jobs:
+  test-structure:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verify project structure
+        run: |
+          echo "Checking project structure..."
+          
+          # Check required directories
+          required_dirs=(".github/workflows" "docs/content" "docs/themes")
+          for dir in "${required_dirs[@]}"; do
+            if [ -d "$dir" ]; then
+              echo "✓ $dir exists"
+            else
+              echo "✗ $dir missing"
+              exit 1
+            fi
+          done
+          
+          # Check required files
+          if [ -f "README.md" ]; then
+            echo "✓ README.md exists"
+          else
+            echo "✗ README.md missing"
+          fi
+
+  lint-yaml:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate YAML syntax
+        run: |
+          echo "Validating YAML files..."
+          for f in .github/workflows/*.yml .github/workflows/*.yaml; do
+            if [ -f "$f" ]; then
+              echo "Checking $f..."
+              python3 -c "
+import yaml
+try:
+    with open('$f') as file:
+        yaml.safe_load(file)
+    print('✓ $f is valid YAML')
+except Exception as e:
+    print('✗ $f: {e}')
+    exit(1)
+" || exit 1
+            fi
+          done
